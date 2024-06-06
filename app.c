@@ -1,21 +1,20 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include <unistd.h> 
 
-char *generateBirthdays(int numBirthdays){
+int *generateBirthdays(int numBirthdays){
     /*
-    Generates birthdays and stores it in a list.
+    Generates int between 1-365 and stores it in a list.
     */
-   char *birthdayList = malloc(numBirthdays);
+   int *birthdayList = malloc(numBirthdays * sizeof(int));
 
    if(!birthdayList){
-    return NULL;
+       return NULL;
    }
 
    for (int i = 0; i < numBirthdays; i++){
-    int randomNum = rand() % (366);
-    birthdayList[i] = randomNum;
+       int randomNum = rand() % 365 + 1;
+       birthdayList[i] = randomNum;
    }
 
    return birthdayList;
@@ -29,13 +28,25 @@ int main(){
     int numBirthdays;
     scanf("%d", &numBirthdays);
 
-    printf("Here are %d birthdays: ", numBirthdays);
-    
-    char *list = generateBirthdays(numBirthdays);
-
-    for (int i = 0; i < numBirthdays; i++){
-    printf("%d",list[i]);
+    // Check for valid number of birthdays
+    if(numBirthdays < 1 || numBirthdays > 100) {
+        printf("Please enter a number between 1 and 100.\n");
+        return 1;
     }
 
+    int *birthdays = generateBirthdays(numBirthdays);
 
+    if (!birthdays) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("Here are %d birthdays: ", numBirthdays);
+    for (int i = 0; i < numBirthdays; i++) {
+        printf("%d ", birthdays[i]);
+    }
+    printf("\n");
+
+    free(birthdays);
+    return 0;
 }
