@@ -1,6 +1,5 @@
 import random
 import datetime
-from time import sleep
 from tqdm import tqdm
 
 def comparison(birthdayList):
@@ -15,11 +14,8 @@ def simulation(numBirthdays):
         birthdayList = generateBirthdays(numBirthdays)
         numSameBirthdays += comparison(birthdayList)
     percentage = numSameBirthdays / 10000
-    print(f"Out of 1,000,000 simulations of {numBirthdays} people, there was a "
-      f"matching birthday in the group {numSameBirthdays} times. This means "
-      f"that {numBirthdays} people have a {percentage:.2f}% chance of "
-      f"having a matching birthday in their group. "
-      "That's probably more than you would think!")
+    print(f"Out of 1,000,000 simulations of {numBirthdays} people, there was a matching birthday in the group {numSameBirthdays} times.")
+    print(f"This means that {numBirthdays} people have a {percentage:.2f}% chance of having a matching birthday in their group. ")
 
 def firstComparison(birthdayList):
     hashset = set()
@@ -36,7 +32,6 @@ def generateBirthdays(birthdaysRequested):
         newDate = startDate + datetime.timedelta(days=randomDay)
         birthdayList.append(newDate.strftime("%b %d"))
     return birthdayList
-
 
 def main():
     print("Birthday Paradox")
