@@ -4,10 +4,10 @@ import datetime
 def comparison(birthdayList):
     sameBirthday = 0
     hashset = set()
-    for i, date in enumerate(birthdayList):
-        if date in hashset:
+    for i in range(len(birthdayList)):
+        if birthdayList[i] in hashset:
             sameBirthday += 1
-        hashset.add(date)
+        hashset.add(birthdayList[i])
     return sameBirthday
 
 def simulation_count(simulationNumber):
@@ -30,19 +30,19 @@ def simulation_count(simulationNumber):
     elif simulationNumber == 90_000:
         print("90,000 simulations run...")
     elif simulationNumber == 99_999:
-        print("100,000 simulations run...")
+        print("100,000 simulations run")
 
 def simulation(numBirthdays):
     numSameBirthdays = 0
     list = []
     print(f"\n\nGenerating {numBirthdays} random birthdays 100,000 times...")
     foo = input("Press Enter to continue...")
-    for i in range(100_001):
+    for i in range(100_000):
         simulation_count(i)
         list = generateBirthdays(numBirthdays)
         numSameBirthdays += comparison(list)
     print(f"Out of 100,000 simulations of {numBirthdays} people, there was a "
-      f"matching birthday in that group {numSameBirthdays} times. This means "
+      f"matching birthday in the group {numSameBirthdays} times. This means "
       f"that {numBirthdays} people have a {numSameBirthdays / 1000:.2f}% chance of "
       f"having a matching birthday in their group. "
       "That's probably more than you would think!")
@@ -51,10 +51,10 @@ def simulation(numBirthdays):
 
 def firstComparison(birthdayList):
     hashset = set()
-    for i, date in enumerate(birthdayList):
-        if date in hashset:
-            print(f"\nIn this simulation, multiple people have a birthday on {date}")
-        hashset.add(date)
+    for i in range(len(birthdayList)):
+        if birthdayList[i] in hashset:
+            print(f"\nIn this simulation, multiple people have a birthday on {birthdayList[i]}")
+        hashset.add(birthdayList[i])
 
 def generateBirthdays(birthdaysRequested):
     startDate = datetime.datetime(1980,1,1)
