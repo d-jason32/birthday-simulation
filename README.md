@@ -23,7 +23,7 @@ The Birthday Paradox is a famous problem in probability theory. It states that i
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/birthday-paradox-simulation.git
+    git clone 
     cd birthday-paradox-simulation
     ```
 
@@ -36,7 +36,7 @@ The Birthday Paradox is a famous problem in probability theory. It states that i
 
 1. **Run the simulation:**
     ```sh
-    python birthday_paradox.py
+    python3 birthday_paradox.py
     ```
 
 2. **Follow the prompts:**
@@ -51,4 +51,20 @@ This function takes a list of birthdays and returns the number of duplicate birt
 
 ### `simulation(numBirthdays)`
 
-This function runs the simulation 1,000,000 times, generating random birthdays for the specified number of people and counting how of
+This function runs the simulation 1,000,000 times, generating random birthdays for the specified number of people and counting how often at least two people share the same birthday. It uses `tqdm` to display a progress bar.
+
+### `firstComparison(birthdayList)`
+
+This function checks if there are any duplicate birthdays in the list and prints the first duplicate it finds.
+
+### `generateBirthdays(birthdaysRequested)`
+
+This function generates a list of random birthdays.
+
+### `main()`
+
+This is the main function that runs the program. It prompts the user for the number of birthdays to generate, prints the generated birthdays, and runs the simulation.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
